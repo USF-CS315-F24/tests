@@ -1,0 +1,14 @@
+[project]
+timeout = 30
+
+[[tests]]
+name = "01"
+input = ["./$project", "World"]
+expected = "Hello, World!"
+rubric = 50
+
+[[tests]]
+name = "02"
+input = ["./$project", "CS315"]
+expected = "Hello, CS315!"
+rubric = 50
