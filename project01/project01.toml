@@ -1,0 +1,65 @@
+[project]
+timeout = 30
+
+[[tests]]
+name = "01"
+input = ["./$project", "3", "-o", "2"]
+expected = "0b11"
+rubric = 5
+
+[[tests]]
+name = "02"
+input = ["./$project", "8132789", "-o", "2"]
+expected = "0b11111000001100010110101"
+rubric = 5
+
+[[tests]]
+name = "03"
+input = ["./$project", "8132789", "-o", "16"]
+expected = "0x7c18b5"
+rubric = 5
+
+[[tests]]
+name = "04"
+input = ["./$project", "0b1101", "-o", "10"]
+expected = "13"
+rubric = 5
+
+[[tests]]
+name = "05"
+input = ["./$project", "0b11111000001100010110101", "-o", "10"]
+expected = "8132789"
+rubric = 5
+
+[[tests]]
+name = "06"
+input = ["./$project", "0b11011110101011011011111011101111", "-o", "16"]
+expected = "0xdeadbeef"
+rubric = 5
+
+[[tests]]
+name = "07"
+input = ["./$project", "0xFE", "-o", "10"]
+expected = "254"
+rubric = 5
+
+[[tests]]
+name = "08"
+input = ["./$project", "0xFE", "-o", "2"]
+expected = "0b11111110"
+rubric = 5
+
+[[tests]]
+name = "09"
+input = ["./$project", "0xFAFA1234", "-o", "16"]
+expected = "0xfafa1234"
+rubric = 5
+
+[[tests]]
+name = "10"
+input = ["./$project", "0b123", "-o", "16"]
+expected = "Bad input"
+rubric = 5
+
+
+
