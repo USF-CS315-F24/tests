@@ -3,63 +3,177 @@ timeout = 30
 
 [[tests]]
 name = "01"
-input = ["./$project", "3", "-o", "2"]
-expected = "0b11"
-rubric = 5
+input = ["./numinfo", "1010"]
+expected = """
+int: true
+bin: true
+hex: true
+"""
+rubric = 1
 
 [[tests]]
 name = "02"
-input = ["./$project", "8132789", "-o", "2"]
-expected = "0b11111000001100010110101"
-rubric = 5
+input = ["./numinfo", "1234"]
+expected = """
+int: true
+bin: false
+hex: true
+"""
+rubric = 1
 
 [[tests]]
 name = "03"
-input = ["./$project", "8132789", "-o", "16"]
-expected = "0x7c18b5"
-rubric = 5
+input = ["./numinfo", "1AB3"]
+expected = """
+int: false
+bin: false
+hex: true
+"""
+rubric = 1
 
 [[tests]]
 name = "04"
-input = ["./$project", "0b1101", "-o", "10"]
-expected = "13"
-rubric = 5
+input = ["./numinfo", "a13b"]
+expected = """
+int: false
+bin: false
+hex: true
+"""
+rubric = 1
 
 [[tests]]
 name = "05"
-input = ["./$project", "0b11111000001100010110101", "-o", "10"]
-expected = "8132789"
-rubric = 5
+input = ["./numinfo", "1234567890987654321"]
+expected = """
+int: true
+bin: false
+hex: true
+"""
+rubric = 1
 
 [[tests]]
 name = "06"
-input = ["./$project", "0b11011110101011011011111011101111", "-o", "16"]
-expected = "0xdeadbeef"
-rubric = 5
+input = ["./numinfo", "00001111111000011100001110000001"]
+expected = """
+int: true
+bin: true
+hex: true
+"""
+rubric = 1
 
 [[tests]]
 name = "07"
-input = ["./$project", "0xFE", "-o", "10"]
-expected = "254"
-rubric = 5
+input = ["./numinfo", "0123456789ABCDEabcdeedcbaEDCBA9876543210"]
+expected = """
+int: false
+bin: false
+hex: true
+"""
+rubric = 1
 
 [[tests]]
 name = "08"
-input = ["./$project", "0xFE", "-o", "2"]
-expected = "0b11111110"
-rubric = 5
+input = ["./numinfo", "#?!*"]
+expected = """
+int: false
+bin: false
+hex: false
+"""
+rubric = 1
 
 [[tests]]
 name = "09"
-input = ["./$project", "0xFAFA1234", "-o", "16"]
-expected = "0xfafa1234"
-rubric = 5
+input = ["./numinfo", "0123456789ABCDEabcde$edcbaEDCBA9876543210"]
+expected = """
+int: false
+bin: false
+hex: false
+"""
+rubric = 1
 
 [[tests]]
 name = "10"
-input = ["./$project", "0b123", "-o", "16"]
+input = ["./numinfo"]
+expected = """
+Usage: numinfo <value>
+"""
+rubric = 1
+
+[[tests]]
+name = "11"
+input = ["./numconv", "3", "-o", "2"]
+expected = "0b11"
+rubric = 3
+
+[[tests]]
+name = "12"
+input = ["./numconv", "8132789", "-o", "2"]
+expected = "0b11111000001100010110101"
+rubric = 3
+
+[[tests]]
+name = "13"
+input = ["./numconv", "8132789", "-o", "16"]
+expected = "0x7c18b5"
+rubric = 3
+
+[[tests]]
+name = "14"
+input = ["./numconv", "0b1101", "-o", "10"]
+expected = "13"
+rubric = 3
+
+[[tests]]
+name = "15"
+input = ["./numconv", "0b11111000001100010110101", "-o", "10"]
+expected = "8132789"
+rubric = 3
+
+[[tests]]
+name = "16"
+input = ["./numconv", "0b11011110101011011011111011101111", "-o", "16"]
+expected = "0xdeadbeef"
+rubric = 3
+
+[[tests]]
+name = "17"
+input = ["./numconv", "0xFE", "-o", "10"]
+expected = "254"
+rubric = 3
+
+[[tests]]
+name = "18"
+input = ["./numconv", "0xFE", "-o", "2"]
+expected = "0b11111110"
+rubric = 4
+
+[[tests]]
+name = "19"
+input = ["./numconv", "0xFAFA1234", "-o", "16"]
+expected = "0xfafa1234"
+rubric = 4
+
+[[tests]]
+name = "20"
+input = ["./numconv", "0b123", "-o", "16"]
 expected = "Bad input"
-rubric = 5
+rubric = 3
 
+[[tests]]
+name = "21"
+input = ["./numconv", "213", "-o", "2", "-o", "16"]
+expected = """
+0b11010101
+0xd5
+"""
+rubric = 4
 
-
+[[tests]]
+name = "22"
+input = ["./numconv", "213", "-o", "2", "-o", "16", "-o", "10"]
+expected = """
+0b11010101
+213
+0xd5
+"""
+rubric = 4
