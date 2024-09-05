@@ -1,0 +1,71 @@
+[[tests]]
+name = "add4-1"
+input = ["./add4", "1", "2", "3", "4"]
+expected = """
+C: 10
+Asm: 10
+"""
+rubric = 10
+
+[[tests]]
+name = "add4-2"
+input = ["./add4", "-1", "2", "3", "4"]
+expected = """
+C: 8
+Asm: 8
+"""
+rubric = 10
+
+[[tests]]
+name = "quadratic-1"
+input = ["./quadratic", "4", "3", "2", "1"]
+expected = """
+C: 57
+Asm: 57
+"""
+rubric = 10
+
+[[tests]]
+name = "quadratic-2"
+input = ["./quadratic", "2", "4", "6", "8"]
+expected = """
+C: 36
+Asm: 36
+"""
+rubric = 10
+
+[[tests]]
+name = "min-1"
+input = ["./min", "1", "2"]
+expected = """
+C: 1
+Asm: 1
+"""
+rubric = 10
+
+[[tests]]
+name = "min-2"
+input = ["./min", "4", "3"]
+expected = """
+C: 3
+Asm: 3
+"""
+rubric = 10
+
+[[tests]]
+name = "sumarr-1"
+input = ["./sumarr", "1", "2", "3", "4", "5"]
+expected = """
+C: 15
+Asm: 15
+"""
+rubric = 10
+
+[[tests]]
+name = "sumarr-2"
+input = ["./sumarr", "99", "1", "1", "1", "1", "1", "1"]
+expected = """
+C: 105
+Asm: 105
+"""
+rubric = 10
