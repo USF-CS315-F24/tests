@@ -1,0 +1,71 @@
+[[tests]]
+name = "findmax"
+input = ["./findmax", "1", "2", "3", "4", "99", "5", "6", "7", "8", "9"]
+expected = """
+C: 99
+Asm: 99
+"""
+rubric = 5
+
+[[tests]]
+name = "findmaxfc"
+input = ["./findmaxfc", "1", "2", "3", "4", "99", "5", "6", "7", "8", "9"]
+expected = """
+C: 99
+Asm: 99
+"""
+rubric = 15
+
+[[tests]]
+name = "swap_1"
+input = ["./swap", "0", "1", "22", "33"]
+expected = """
+C: 33 22
+Asm: 33 22
+"""
+rubric = 10
+
+[[tests]]
+name = "swap_2"
+input = ["./swap", "4", "3", "11", "22", "33", "55", "66", "77"]
+expected = """
+C: 11 22 33 66 55 77
+Asm: 11 22 33 66 55 77
+"""
+rubric = 10
+
+[[tests]]
+name = "sort_1"
+input = ["./sort", "33", "22", "11"]
+expected = """
+C: 11 22 33
+Asm: 11 22 33
+"""
+rubric = 10
+
+[[tests]]
+name = "sort_2"
+input = ["./sort", "2", "7", "4", "1"]
+expected = """
+C: 1 2 4 7
+Asm: 1 2 4 7
+"""
+rubric = 10
+
+[[tests]]
+name = "fibrec-3"
+input = ["./fibrec", "3"]
+expected = """
+C: 2
+Asm: 2
+"""
+rubric = 10
+
+[[tests]]
+name = "fibrec-10"
+input = ["./fibrec", "10"]
+expected = """
+C: 55
+Asm: 55
+"""
+rubric = 10
