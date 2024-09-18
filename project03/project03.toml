@@ -1,0 +1,115 @@
+[project]
+timeout = 10
+
+[[tests]]
+name = "rstr_1"
+input = ["./rstr", "FooBar"]
+expected = """
+C: raBooF
+Asm: raBooF
+"""
+rubric = 10
+
+[[tests]]
+name = "rstr_2"
+input = ["./rstr", "CS315 Computer Architecture"]
+expected = """
+C: erutcetihcrA retupmoC 513SC
+Asm: erutcetihcrA retupmoC 513SC
+"""
+rubric = 10
+
+[[tests]]
+name = "rstr_rec_1"
+input = ["./rstr_rec", "FooBar"]
+expected = """
+C: raBooF
+Asm: raBooF
+"""
+rubric = 10
+
+[[tests]]
+name = "rstr_rec_2"
+input = ["./rstr_rec", "CS315 Computer Architecture"]
+expected = """
+C: erutcetihcrA retupmoC 513SC
+Asm: erutcetihcrA retupmoC 513SC
+"""
+rubric = 10
+
+[[tests]]
+name = "unstruct_1"
+input = ["./unstruct", "1", "2", "3", "4", "5"]
+expected = """
+C:
+1 (0x1)
+2 (0x2)
+3 (0x3)
+4 (0x4)
+5 (0x5)
+Asm:
+1 (0x1)
+2 (0x2)
+3 (0x3)
+4 (0x4)
+5 (0x5)
+"""
+rubric = 10
+
+[[tests]]
+name = "unstruct_2"
+input = ["./unstruct", "99", "-99", "99", "-99", "-99"]
+expected = """
+C:
+99 (0x63)
+-99 (0xFFFFFFFFFFFFFF9D)
+99 (0x63)
+-99 (0xFFFFFFFFFFFFFF9D)
+-99 (0xFFFFFFFFFFFFFF9D)
+Asm:
+99 (0x63)
+-99 (0xFFFFFFFFFFFFFF9D)
+99 (0x63)
+-99 (0xFFFFFFFFFFFFFF9D)
+-99 (0xFFFFFFFFFFFFFF9D)
+"""
+rubric = 10
+
+[[tests]]
+name = "findmaxll"
+input = ["./findmaxll", "1", "2", "3", "4", "99", "5", "6", "7", "8", "9"]
+expected = """
+C: 99
+Asm: 99
+"""
+rubric = 10
+
+[[tests]]
+name = "findmaxllp"
+input = ["./findmaxllp", "1", "2", "3", "4", "99", "5", "6", "7", "8", "9"]
+expected = """
+v = 1
+v = 2
+v = 3
+v = 4
+v = 99
+v = 5
+v = 6
+v = 7
+v = 8
+v = 9
+C: 99
+v = 1
+v = 2
+v = 3
+v = 4
+v = 99
+v = 5
+v = 6
+v = 7
+v = 8
+v = 9
+Asm: 99
+"""
+rubric = 10
+
