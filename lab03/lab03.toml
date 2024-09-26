@@ -1,0 +1,82 @@
+[project]
+timeout = 60
+
+[[tests]]
+name = "quad_1"
+input = ["./$project", "quadratic", "1", "2", "3", "4"]
+expected = """
+C: 9
+Asm: 9
+Emu: 9
+"""
+rubric = 10
+
+[[tests]]
+name = "quad_2"
+input = ["./$project", "quadratic", "2", "1", "0", "-4"]
+expected = """
+C: 0
+Asm: 0
+Emu: 0
+"""
+rubric = 10
+
+[[tests]]
+name = "mid_1"
+input = ["./$project", "midpoint", "0", "4"]
+expected = """
+C: 2
+Asm: 2
+Emu: 2
+"""
+rubric = 10
+
+[[tests]]
+name = "mid_2"
+input = ["./$project", "midpoint", "120", "130"]
+expected = """
+C: 125
+Asm: 125
+Emu: 125
+"""
+rubric = 10
+
+[[tests]]
+name = "max_1"
+input = ["./$project", "max3", "3", "8", "5"]
+expected = """
+C: 8
+Asm: 8
+Emu: 8
+"""
+rubric = 10
+
+[[tests]]
+name = "max_2"
+input = ["./$project", "max3", "0", "-1", "-2"]
+expected = """
+C: 0
+Asm: 0
+Emu: 0
+"""
+rubric = 10
+
+[[tests]]
+name = "bitseq_1"
+input = ["./$project", "get_bitseq", "94117", "12", "15"]
+expected = """
+C: 6
+Asm: 6
+Emu: 6
+"""
+rubric = 10
+
+[[tests]]
+name = "bitseq_2"
+input = ["./$project", "get_bitseq", "94117", "4", "7"]
+expected = """
+C: 10
+Asm: 10
+Emu: 10
+"""
+rubric = 10
