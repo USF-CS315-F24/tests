@@ -1,0 +1,260 @@
+[project]
+timeout = 30
+
+[[tests]]
+name = "quadratic"
+input = ["./$project", "quadratic", "2", "4", "6", "8"]
+expected = """
+C: 36
+Asm: 36
+Emu: 36
+"""
+rubric = 1
+
+[[tests]]
+name = "midpoint"
+input = ["./$project", "midpoint", "0", "4"]
+expected = """
+C: 2
+Asm: 2
+Emu: 2
+"""
+rubric = 1
+
+[[tests]]
+name = "max3"
+input = ["./$project", "max3", "2", "10", "8"]
+expected = """
+C: 10
+Asm: 10
+Emu: 10
+"""
+rubric = 2
+
+[[tests]]
+name = "to_upper"
+case_sensitive = true
+input = ["./$project", "to_upper", "FooBar"]
+expected = """
+C: FOOBAR
+Asm: FOOBAR
+Emu: FOOBAR
+"""
+rubric = 5
+
+[[tests]]
+name = "get_bitseq_1"
+input = ["./$project", "get_bitseq", "94116", "12", "15"]
+expected = """
+C: 6
+Asm: 6
+Emu: 6
+"""
+rubric = 3
+
+[[tests]]
+name = "get_bitseq_2"
+input = ["./$project", "get_bitseq", "94117", "4", "7"]
+expected = """
+C: 10
+Asm: 10
+Emu: 10
+"""
+rubric = 3
+
+[[tests]]
+name = "get_bitseq_signed_1"
+input = ["./$project", "get_bitseq_signed", "94117", "12", "15"]
+expected = """
+C: 6
+Asm: 6
+Emu: 6
+"""
+rubric = 5
+
+[[tests]]
+name = "get_bitseq_signed_2"
+input = ["./$project", "get_bitseq_signed", "94117", "4", "7"]
+expected = """
+C: -6
+Asm: -6
+Emu: -6
+"""
+rubric = 5
+
+[[tests]]
+name = "countll"
+input = ["./$project", "countll", "11"]
+expected = """
+C: 11
+Asm: 11
+Emu: 11
+"""
+rubric = 9
+
+[[tests]]
+name = "fib_rec"
+input = ["./$project", "fib_rec", "10"]
+expected = """
+C: 55
+Asm: 55
+Emu: 55
+"""
+rubric = 8
+
+[[tests]]
+name = "swap_1"
+input = ["./$project", "swap", "0", "1", "22", "33"]
+expected = """
+C: 33 22
+Asm: 33 22
+Emu: 33 22
+"""
+rubric = 4
+
+[[tests]]
+name = "swap_2"
+input = ["./$project", "swap", "4", "3", "11", "22", "33", "55", "66", "77"]
+expected = """
+C: 11 22 33 66 55 77
+Asm: 11 22 33 66 55 77
+Emu: 11 22 33 66 55 77
+"""
+rubric = 4
+
+
+[[tests]]
+name = "sort"
+input = ["./$project", "sort", "6", "4", "1", "2", "5", "3"]
+expected = """
+C: 1 2 3 4 5 6
+Asm: 1 2 3 4 5 6
+Emu: 1 2 3 4 5 6
+"""
+rubric = 6
+
+[[tests]]
+name = "quadratic_analysis"
+input = ["./$project", "-a", "quadratic", "2", "4", "6", "8"]
+expected = """
+C: 36
+Asm: 36
+Emu: 36
+=== Analysis
+Instructions Executed  = 6
+R-type + I-type        = 5 (83.33%)
+Loads                  = 0 (0.00%)
+Stores                 = 0 (0.00%)
+Jumps/JAL/JALR         = 1 (16.67%)
+Conditional branches   = 0 (0.00%)
+  Branches taken       = 0 (0.00%)
+  Branches not taken   = 0 (0.00%)
+"""
+rubric = 4
+
+[[tests]]
+name = "sort_analysis"
+input = ["./$project", "-a", "sort", "80", "70", "60", "50", "40", "30", "20", "10" ]
+expected = """
+C: 10 20 30 40 50 60 70 80
+Asm: 10 20 30 40 50 60 70 80
+Emu: 10 20 30 40 50 60 70 80
+=== Analysis
+Instructions Executed  = 910
+R-type + I-type        = 353 (38.79%)
+Loads                  = 225 (24.73%)
+Stores                 = 169 (18.57%)
+Jumps/JAL/JALR         = 92 (10.11%)
+Conditional branches   = 71 (7.80%)
+  Branches taken       = 8 (11.27%)
+  Branches not taken   = 63 (88.73%)
+"""
+rubric = 4
+
+[[tests]]
+name = "sort_dm_32_1"
+input = ["./$project", "-dm", "32", "1", "sort", "80", "70", "60", "50", "40", "30", "20", "10", 
+         "8", "7", "6", "5", "4", "3", "2", "1"]
+expected = """
+C: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Asm: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Emu: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+=== Cache (I)
+Type          = direct mapped
+Size          = 32 slots
+Block size    = 1 words
+Ways          = 1
+References    = 3802
+Hits          = 1381 (36.32% hit ratio)
+Misses        = 2421 (63.68% miss ratio)
+Misses (cold) = 31
+Misses (hot)  = 2390
+% Used        = 96.88%
+"""
+rubric = 2
+
+[[tests]]
+name = "sort_dm_32_4"
+input = ["./$project", "-dm", "32", "4", "sort", "80", "70", "60", "50", "40", "30", "20", "10", 
+         "8", "7", "6", "5", "4", "3", "2", "1"]
+expected = """
+C: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Asm: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Emu: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+=== Cache (I)
+Type          = direct mapped
+Size          = 32 slots
+Block size    = 4 words
+Ways          = 1
+References    = 3802
+Hits          = 3077 (80.93% hit ratio)
+Misses        = 725 (19.07% miss ratio)
+Misses (cold) = 8
+Misses (hot)  = 717
+% Used        = 100.00%
+"""
+rubric = 8
+
+[[tests]]
+name = "sort_sa_32_1_4"
+input = ["./$project", "-sa", "32", "1", "4", "sort", "80", "70", "60", "50", "40", "30", "20", "10", 
+         "8", "7", "6", "5", "4", "3", "2", "1"]
+expected = """
+C: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Asm: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Emu: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+=== Cache (I)
+Type          = set associative
+Size          = 32 slots
+Block size    = 1 words
+Ways          = 4
+References    = 3802
+Hits          = 2500 (65.75% hit ratio)
+Misses        = 1302 (34.25% miss ratio)
+Misses (cold) = 32
+Misses (hot)  = 1270
+% Used        = 100.00%
+"""
+rubric = 8
+
+[[tests]]
+name = "sort_sa_32_4_4"
+input = ["./$project", "-sa", "32", "4", "4", "sort", "80", "70", "60", "50", "40", "30", "20", "10", 
+         "8", "7", "6", "5", "4", "3", "2", "1"]
+expected = """
+C: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Asm: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+Emu: 1 2 3 4 5 6 7 8 10 20 30 40 50 60 70 80
+=== Cache (I)
+Type          = set associative
+Size          = 32 slots
+Block size    = 4 words
+Ways          = 4
+References    = 3802
+Hits          = 3181 (83.67% hit ratio)
+Misses        = 621 (16.33% miss ratio)
+Misses (cold) = 8
+Misses (hot)  = 613
+% Used        = 100.00%
+"""
+rubric = 8
