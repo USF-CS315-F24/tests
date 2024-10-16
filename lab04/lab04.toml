@@ -1,0 +1,30 @@
+[project]
+build = "none"
+strip_output = """
+Use default settings!
+"""
+timeout = 15
+
+[[tests]]
+name = "max2"
+input = ["java", "-cp", "$digital", "CLI", "test", "max2.dig", "-tests", "$project_tests/max2_test.dig"]
+expected = """
+max2_test: passed
+"""
+rubric = 33
+
+[[tests]]
+name = "1-bit-full-adder"
+input = ["java", "-cp", "$digital", "CLI", "test", "1-bit-full-adder.dig", "-tests", "$project_tests/1bfa_test.dig"]
+expected = """
+1bfa_test: passed
+"""
+rubric = 33
+
+[[tests]]
+name = "8-bit-ripple-carry-adder"
+input = ["java", "-cp", "$digital", "CLI", "test", "8-bit-ripple-carry-adder.dig", "-tests", "$project_tests/8brca_test.dig"]
+expected = """
+8brca_test: passed
+"""
+rubric = 34
