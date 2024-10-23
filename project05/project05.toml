@@ -1,0 +1,38 @@
+[project]
+build = "none"
+strip_output = """
+Use default settings!
+"""
+timeout = 30
+
+[[tests]]
+name = "fib-rec"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/fib-rec-test.dig"]
+expected = """
+fib-rec-test: passed
+"""
+rubric = 22
+
+[[tests]]
+name = "is-pal-rec"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/is-pal-test.dig"]
+expected = """
+is-pal-test: passed
+"""
+rubric = 22
+
+[[tests]]
+name = "get-bitseq"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/get-bitseq-test.dig"]
+expected = """
+get-bitseq-test: passed
+"""
+rubric = 22
+
+[[tests]]
+name = "quadratic"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/quadratic-test.dig"]
+expected = """
+quadratic-test: passed
+"""
+rubric = 22

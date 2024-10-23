@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>quadratic-test</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLR CLK PROG ITYPE RTYPE LOAD STYPE BTYPE JAL J JALR TOTAL
+1   x   x    x  x   x x  x  x    x  x x
+while (!(DONE))
+0 C 3 x x x x x x x x x
+end while
+0 0 x 0 5 0 0 0 0 0 1 6
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="100" y="80"/>
+    </visualElement>
+  </visualElements>
+  <wires/>
+  <measurementOrdering/>
+</circuit>
