@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>add-imm-test</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK CLR RR0 RR1 WR WE ALUOp ALUSrcB Imm T0
+0   1   0   0   0  1  0     1       1   x
+0   0   0   0   5  1  0     1       1   x
+1   0   0   0   5  1  0     1       1   1
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="140" y="100"/>
+    </visualElement>
+  </visualElements>
+  <wires/>
+  <measurementOrdering/>
+</circuit>
