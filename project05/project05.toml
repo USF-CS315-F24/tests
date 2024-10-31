@@ -4,6 +4,7 @@ strip_output = """
 Use default settings!
 """
 timeout = 30
+capture_stderr = false
 
 [[tests]]
 name = "fib-rec"
