@@ -1,0 +1,24 @@
+[project]
+build = "none"
+strip_output = """
+Use default settings!
+"""
+timeout = 20
+capture_stderr = false
+
+[[tests]]
+name = "part1"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project-part1.dig", "-tests", "$project_tests/part1-test.dig"]
+expected = """
+part1-test: passed
+"""
+rubric = 50
+
+[[tests]]
+name = "part2"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project-part2.dig", "-tests", "$project_tests/part2-test.dig"]
+expected = """
+part2-test: passed
+"""
+rubric = 50
+

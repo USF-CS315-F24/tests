@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>part1-test</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK EN CLR PROG A0 A1 A2
+0   0   1   0    x x x
+1   0   1   0    x x x
+0   1   0   0    x x x
+while (!(DONE))
+C   1  	0   0    x x x
+end while
+0   1   0   0    1 2 3</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="160" y="140"/>
+    </visualElement>
+  </visualElements>
+  <wires/>
+  <measurementOrdering/>
+</circuit>
