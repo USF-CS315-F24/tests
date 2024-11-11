@@ -1,0 +1,14 @@
+
+unit-bge.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	00200513          	li	a0,2
+   4:	00100593          	li	a1,1
+   8:	00b55463          	bge	a0,a1,10 <equal>
+   c:	00000513          	li	a0,0
+
+0000000000000010 <equal>:
+  10:	c0001073          	unimp

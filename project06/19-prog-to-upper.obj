@@ -1,0 +1,66 @@
+
+prog-to-upper.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	40000113          	li	sp,1024
+   4:	ff810113          	add	sp,sp,-8
+   8:	04600293          	li	t0,70
+   c:	00510023          	sb	t0,0(sp)
+  10:	06f00293          	li	t0,111
+  14:	005100a3          	sb	t0,1(sp)
+  18:	06f00293          	li	t0,111
+  1c:	00510123          	sb	t0,2(sp)
+  20:	04200293          	li	t0,66
+  24:	005101a3          	sb	t0,3(sp)
+  28:	06100293          	li	t0,97
+  2c:	00510223          	sb	t0,4(sp)
+  30:	07200293          	li	t0,114
+  34:	005102a3          	sb	t0,5(sp)
+  38:	00010323          	sb	zero,6(sp)
+  3c:	00200533          	add	a0,zero,sp
+  40:	ff810113          	add	sp,sp,-8
+  44:	002005b3          	add	a1,zero,sp
+  48:	002004b3          	add	s1,zero,sp
+  4c:	03c000ef          	jal	88 <to_upper_s>
+  50:	00000913          	li	s2,0
+  54:	00000293          	li	t0,0
+  58:	00800313          	li	t1,8
+  5c:	03800393          	li	t2,56
+
+0000000000000060 <pack>:
+  60:	02628063          	beq	t0,t1,80 <done_pack>
+  64:	00048e03          	lb	t3,0(s1)
+  68:	007e1e33          	sll	t3,t3,t2
+  6c:	01c96933          	or	s2,s2,t3
+  70:	00148493          	add	s1,s1,1
+  74:	00128293          	add	t0,t0,1
+  78:	ff838393          	add	t2,t2,-8
+  7c:	fe5ff06f          	j	60 <pack>
+
+0000000000000080 <done_pack>:
+  80:	01200533          	add	a0,zero,s2
+  84:	c0001073          	unimp
+
+0000000000000088 <to_upper_s>:
+  88:	06100313          	li	t1,97
+  8c:	07b00393          	li	t2,123
+
+0000000000000090 <loop>:
+  90:	00050283          	lb	t0,0(a0)
+  94:	02028063          	beqz	t0,b4 <done>
+  98:	0062c663          	blt	t0,t1,a4 <next>
+  9c:	0072d463          	bge	t0,t2,a4 <next>
+  a0:	fe028293          	add	t0,t0,-32
+
+00000000000000a4 <next>:
+  a4:	00558023          	sb	t0,0(a1)
+  a8:	00150513          	add	a0,a0,1
+  ac:	00158593          	add	a1,a1,1
+  b0:	fe1ff06f          	j	90 <loop>
+
+00000000000000b4 <done>:
+  b4:	00058023          	sb	zero,0(a1)
+  b8:	00008067          	ret

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>13-unit-sw-lw</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLR EN CLK PROG A0 A1 A2 A3
+1   0   0   x    x    x    x    x
+0   0   0   x    x    x    x    x
+while (!(DONE))
+0   1   C   13    x    x    x    x
+end while
+0   1   0   13 99  0  0  0</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="180" y="160"/>
+    </visualElement>
+  </visualElements>
+  <wires/>
+  <measurementOrdering/>
+</circuit>

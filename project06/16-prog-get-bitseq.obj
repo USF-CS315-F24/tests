@@ -1,0 +1,36 @@
+
+prog-get-bitseq.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	00000513          	li	a0,0
+   4:	01650513          	add	a0,a0,22
+   8:	00851513          	sll	a0,a0,0x8
+   c:	0fa50513          	add	a0,a0,250
+  10:	00451513          	sll	a0,a0,0x4
+  14:	00550513          	add	a0,a0,5
+  18:	00c00593          	li	a1,12
+  1c:	00f00613          	li	a2,15
+  20:	008000ef          	jal	28 <get_bitseq_s>
+  24:	c0001073          	unimp
+
+0000000000000028 <get_bitseq_s>:
+  28:	40b602b3          	sub	t0,a2,a1
+  2c:	00128293          	add	t0,t0,1
+  30:	04000393          	li	t2,64
+  34:	00729863          	bne	t0,t2,44 <build_mask>
+  38:	00050313          	mv	t1,a0
+  3c:	fff00393          	li	t2,-1
+  40:	0140006f          	j	54 <apply_mask>
+
+0000000000000044 <build_mask>:
+  44:	00b55333          	srl	t1,a0,a1
+  48:	00100393          	li	t2,1
+  4c:	005393b3          	sll	t2,t2,t0
+  50:	fff38393          	add	t2,t2,-1
+
+0000000000000054 <apply_mask>:
+  54:	00737533          	and	a0,t1,t2
+  58:	00008067          	ret

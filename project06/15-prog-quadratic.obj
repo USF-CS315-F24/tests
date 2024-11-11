@@ -1,0 +1,21 @@
+
+prog-quadratic.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	00200513          	li	a0,2
+   4:	00300593          	li	a1,3
+   8:	00400613          	li	a2,4
+   c:	00500693          	li	a3,5
+  10:	008000ef          	jal	18 <quadratic_s>
+  14:	c0001073          	unimp
+
+0000000000000018 <quadratic_s>:
+  18:	02a502b3          	mul	t0,a0,a0
+  1c:	02b282b3          	mul	t0,t0,a1
+  20:	02c50333          	mul	t1,a0,a2
+  24:	00628533          	add	a0,t0,t1
+  28:	00d50533          	add	a0,a0,a3
+  2c:	00008067          	ret

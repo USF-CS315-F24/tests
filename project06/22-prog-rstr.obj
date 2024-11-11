@@ -1,0 +1,92 @@
+
+prog-rstr.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	40000113          	li	sp,1024
+   4:	ff810113          	add	sp,sp,-8
+   8:	04600293          	li	t0,70
+   c:	00510023          	sb	t0,0(sp)
+  10:	06f00293          	li	t0,111
+  14:	005100a3          	sb	t0,1(sp)
+  18:	06f00293          	li	t0,111
+  1c:	00510123          	sb	t0,2(sp)
+  20:	04200293          	li	t0,66
+  24:	005101a3          	sb	t0,3(sp)
+  28:	06100293          	li	t0,97
+  2c:	00510223          	sb	t0,4(sp)
+  30:	07200293          	li	t0,114
+  34:	005102a3          	sb	t0,5(sp)
+  38:	00010323          	sb	zero,6(sp)
+  3c:	000103a3          	sb	zero,7(sp)
+  40:	002005b3          	add	a1,zero,sp
+  44:	ff810113          	add	sp,sp,-8
+  48:	00200533          	add	a0,zero,sp
+  4c:	002004b3          	add	s1,zero,sp
+  50:	05c000ef          	jal	ac <rstr_s>
+  54:	00000913          	li	s2,0
+  58:	00000293          	li	t0,0
+  5c:	00800313          	li	t1,8
+  60:	03800393          	li	t2,56
+
+0000000000000064 <pack>:
+  64:	02628063          	beq	t0,t1,84 <done_pack>
+  68:	00048e03          	lb	t3,0(s1)
+  6c:	007e1e33          	sll	t3,t3,t2
+  70:	01c96933          	or	s2,s2,t3
+  74:	00148493          	add	s1,s1,1
+  78:	00128293          	add	t0,t0,1
+  7c:	ff838393          	add	t2,t2,-8
+  80:	fe5ff06f          	j	64 <pack>
+
+0000000000000084 <done_pack>:
+  84:	01200533          	add	a0,zero,s2
+  88:	c0001073          	unimp
+
+000000000000008c <strlen>:
+  8c:	00000293          	li	t0,0
+
+0000000000000090 <strlen_loop>:
+  90:	00050303          	lb	t1,0(a0)
+  94:	00030863          	beqz	t1,a4 <strlen_loop_end>
+  98:	00128293          	add	t0,t0,1
+  9c:	00150513          	add	a0,a0,1
+  a0:	ff1ff06f          	j	90 <strlen_loop>
+
+00000000000000a4 <strlen_loop_end>:
+  a4:	00028513          	mv	a0,t0
+  a8:	00008067          	ret
+
+00000000000000ac <rstr_s>:
+  ac:	fe010113          	add	sp,sp,-32
+  b0:	00113023          	sd	ra,0(sp)
+  b4:	00a13423          	sd	a0,8(sp)
+  b8:	00b13823          	sd	a1,16(sp)
+  bc:	00058513          	mv	a0,a1
+  c0:	fcdff0ef          	jal	8c <strlen>
+  c4:	00050293          	mv	t0,a0
+  c8:	00813503          	ld	a0,8(sp)
+  cc:	01013583          	ld	a1,16(sp)
+  d0:	00000313          	li	t1,0
+  d4:	00028393          	mv	t2,t0
+  d8:	fff38393          	add	t2,t2,-1
+
+00000000000000dc <rstr_loop>:
+  dc:	02535063          	bge	t1,t0,fc <rstr_done>
+  e0:	00758eb3          	add	t4,a1,t2
+  e4:	000e8f03          	lb	t5,0(t4)
+  e8:	00650eb3          	add	t4,a0,t1
+  ec:	01ee8023          	sb	t5,0(t4)
+  f0:	00130313          	add	t1,t1,1
+  f4:	fff38393          	add	t2,t2,-1
+  f8:	fe5ff06f          	j	dc <rstr_loop>
+
+00000000000000fc <rstr_done>:
+  fc:	00000f13          	li	t5,0
+ 100:	00550eb3          	add	t4,a0,t0
+ 104:	01ee8023          	sb	t5,0(t4)
+ 108:	00013083          	ld	ra,0(sp)
+ 10c:	02010113          	add	sp,sp,32
+ 110:	00008067          	ret

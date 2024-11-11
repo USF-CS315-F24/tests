@@ -1,0 +1,32 @@
+
+prog-fibrec.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	40000113          	li	sp,1024
+   4:	00a00513          	li	a0,10
+   8:	008000ef          	jal	10 <fib_rec_s>
+   c:	c0001073          	unimp
+
+0000000000000010 <fib_rec_s>:
+  10:	00100293          	li	t0,1
+  14:	00a2c463          	blt	t0,a0,1c <rec_case>
+  18:	00008067          	ret
+
+000000000000001c <rec_case>:
+  1c:	fe810113          	add	sp,sp,-24
+  20:	00113023          	sd	ra,0(sp)
+  24:	00a13423          	sd	a0,8(sp)
+  28:	fff50513          	add	a0,a0,-1
+  2c:	fe5ff0ef          	jal	10 <fib_rec_s>
+  30:	00a13823          	sd	a0,16(sp)
+  34:	00813503          	ld	a0,8(sp)
+  38:	ffe50513          	add	a0,a0,-2
+  3c:	fd5ff0ef          	jal	10 <fib_rec_s>
+  40:	01013303          	ld	t1,16(sp)
+  44:	00650533          	add	a0,a0,t1
+  48:	00013083          	ld	ra,0(sp)
+  4c:	01810113          	add	sp,sp,24
+  50:	00008067          	ret

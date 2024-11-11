@@ -1,0 +1,91 @@
+
+prog-sort.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	40000113          	li	sp,1024
+   4:	fe010113          	add	sp,sp,-32
+   8:	00200293          	li	t0,2
+   c:	00512023          	sw	t0,0(sp)
+  10:	00800293          	li	t0,8
+  14:	00512223          	sw	t0,4(sp)
+  18:	00600293          	li	t0,6
+  1c:	00512423          	sw	t0,8(sp)
+  20:	00400293          	li	t0,4
+  24:	00512623          	sw	t0,12(sp)
+  28:	00a00293          	li	t0,10
+  2c:	00512823          	sw	t0,16(sp)
+  30:	00c00293          	li	t0,12
+  34:	00512a23          	sw	t0,20(sp)
+  38:	00200533          	add	a0,zero,sp
+  3c:	002004b3          	add	s1,zero,sp
+  40:	00400593          	li	a1,4
+  44:	038000ef          	jal	7c <sort_s>
+  48:	0004a503          	lw	a0,0(s1)
+  4c:	02051513          	sll	a0,a0,0x20
+  50:	0044a283          	lw	t0,4(s1)
+  54:	00556533          	or	a0,a0,t0
+  58:	0084a583          	lw	a1,8(s1)
+  5c:	02059593          	sll	a1,a1,0x20
+  60:	00c4a283          	lw	t0,12(s1)
+  64:	0055e5b3          	or	a1,a1,t0
+  68:	0104a603          	lw	a2,16(s1)
+  6c:	02061613          	sll	a2,a2,0x20
+  70:	0144a283          	lw	t0,20(s1)
+  74:	00566633          	or	a2,a2,t0
+  78:	c0001073          	unimp
+
+000000000000007c <sort_s>:
+  7c:	fd810113          	add	sp,sp,-40
+  80:	00113023          	sd	ra,0(sp)
+  84:	00100293          	li	t0,1
+
+0000000000000088 <floop>:
+  88:	06b2d263          	bge	t0,a1,ec <fdone>
+  8c:	00028313          	mv	t1,t0
+
+0000000000000090 <wloop>:
+  90:	04605a63          	blez	t1,e4 <wdone>
+  94:	00400e13          	li	t3,4
+  98:	03c30eb3          	mul	t4,t1,t3
+  9c:	01d50f33          	add	t5,a0,t4
+  a0:	ffcf0f93          	add	t6,t5,-4
+  a4:	000f2f03          	lw	t5,0(t5)
+  a8:	000faf83          	lw	t6,0(t6)
+  ac:	03ff5c63          	bge	t5,t6,e4 <wdone>
+  b0:	00a13423          	sd	a0,8(sp)
+  b4:	00b13823          	sd	a1,16(sp)
+  b8:	00513c23          	sd	t0,24(sp)
+  bc:	02613023          	sd	t1,32(sp)
+  c0:	00030593          	mv	a1,t1
+  c4:	fff30613          	add	a2,t1,-1
+  c8:	030000ef          	jal	f8 <swap_s>
+  cc:	00813503          	ld	a0,8(sp)
+  d0:	01013583          	ld	a1,16(sp)
+  d4:	01813283          	ld	t0,24(sp)
+  d8:	02013303          	ld	t1,32(sp)
+  dc:	fff30313          	add	t1,t1,-1
+  e0:	fb1ff06f          	j	90 <wloop>
+
+00000000000000e4 <wdone>:
+  e4:	00128293          	add	t0,t0,1
+  e8:	fa1ff06f          	j	88 <floop>
+
+00000000000000ec <fdone>:
+  ec:	00013083          	ld	ra,0(sp)
+  f0:	02810113          	add	sp,sp,40
+  f4:	00008067          	ret
+
+00000000000000f8 <swap_s>:
+  f8:	00400293          	li	t0,4
+  fc:	02558333          	mul	t1,a1,t0
+ 100:	00650333          	add	t1,a0,t1
+ 104:	025603b3          	mul	t2,a2,t0
+ 108:	007503b3          	add	t2,a0,t2
+ 10c:	00032e03          	lw	t3,0(t1)
+ 110:	0003ae83          	lw	t4,0(t2)
+ 114:	01d32023          	sw	t4,0(t1)
+ 118:	01c3a023          	sw	t3,0(t2)
+ 11c:	00008067          	ret

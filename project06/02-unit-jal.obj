@@ -1,0 +1,15 @@
+
+unit-jal.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	00100513          	li	a0,1
+   4:	00200593          	li	a1,2
+   8:	008000ef          	jal	10 <first_s>
+   c:	c0001073          	unimp
+
+0000000000000010 <first_s>:
+  10:	00b50533          	add	a0,a0,a1
+  14:	00008067          	ret

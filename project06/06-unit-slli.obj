@@ -1,0 +1,10 @@
+
+unit-slli.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	00100593          	li	a1,1
+   4:	00359513          	sll	a0,a1,0x3
+   8:	c0001073          	unimp

@@ -1,0 +1,10 @@
+
+unit-srli.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	02000593          	li	a1,32
+   4:	0025d513          	srl	a0,a1,0x2
+   8:	c0001073          	unimp

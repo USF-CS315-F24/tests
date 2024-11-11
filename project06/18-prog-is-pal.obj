@@ -1,0 +1,55 @@
+
+prog-is-pal.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	40000113          	li	sp,1024
+   4:	ff810113          	add	sp,sp,-8
+   8:	07200293          	li	t0,114
+   c:	00510023          	sb	t0,0(sp)
+  10:	06100293          	li	t0,97
+  14:	005100a3          	sb	t0,1(sp)
+  18:	06300293          	li	t0,99
+  1c:	00510123          	sb	t0,2(sp)
+  20:	06500293          	li	t0,101
+  24:	005101a3          	sb	t0,3(sp)
+  28:	06300293          	li	t0,99
+  2c:	00510223          	sb	t0,4(sp)
+  30:	06100293          	li	t0,97
+  34:	005102a3          	sb	t0,5(sp)
+  38:	07200293          	li	t0,114
+  3c:	00510323          	sb	t0,6(sp)
+  40:	000103a3          	sb	zero,7(sp)
+  44:	00200533          	add	a0,zero,sp
+  48:	00000593          	li	a1,0
+  4c:	00600613          	li	a2,6
+  50:	008000ef          	jal	58 <pal_rec_s>
+  54:	c0001073          	unimp
+
+0000000000000058 <pal_rec_s>:
+  58:	00c5c663          	blt	a1,a2,64 <check_eq>
+  5c:	00100513          	li	a0,1
+  60:	03c0006f          	j	9c <done>
+
+0000000000000064 <check_eq>:
+  64:	00b502b3          	add	t0,a0,a1
+  68:	00028283          	lb	t0,0(t0)
+  6c:	00c50333          	add	t1,a0,a2
+  70:	00030303          	lb	t1,0(t1)
+  74:	00628663          	beq	t0,t1,80 <rec_case>
+  78:	00000513          	li	a0,0
+  7c:	0200006f          	j	9c <done>
+
+0000000000000080 <rec_case>:
+  80:	ff810113          	add	sp,sp,-8
+  84:	00113023          	sd	ra,0(sp)
+  88:	00158593          	add	a1,a1,1
+  8c:	fff60613          	add	a2,a2,-1
+  90:	fc9ff0ef          	jal	58 <pal_rec_s>
+  94:	00013083          	ld	ra,0(sp)
+  98:	00810113          	add	sp,sp,8
+
+000000000000009c <done>:
+  9c:	00008067          	ret

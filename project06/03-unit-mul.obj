@@ -1,0 +1,11 @@
+
+unit-mul.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	00300513          	li	a0,3
+   4:	00700593          	li	a1,7
+   8:	02b50533          	mul	a0,a0,a1
+   c:	c0001073          	unimp

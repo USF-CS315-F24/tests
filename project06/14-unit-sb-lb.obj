@@ -1,0 +1,14 @@
+
+unit-sb-lb.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	08000113          	li	sp,128
+   4:	ff810113          	add	sp,sp,-8
+   8:	00000513          	li	a0,0
+   c:	06300293          	li	t0,99
+  10:	005101a3          	sb	t0,3(sp)
+  14:	00310503          	lb	a0,3(sp)
+  18:	c0001073          	unimp
