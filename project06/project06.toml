@@ -3,8 +3,9 @@ build = "none"
 strip_output = """
 Use default settings!
 """
-timeout = 20
+timeout = 30
 capture_stderr = false
+
 
 [[tests]]
 name = "00-unit-add-i"
@@ -183,7 +184,7 @@ input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$p
 expected = """
 19-prog-to-upper: passed
 """
-rubric = 10
+rubric = 5
 
 
 [[tests]]
@@ -192,7 +193,7 @@ input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$p
 expected = """
 20-prog-swap: passed
 """
-rubric = 10
+rubric = 5
 
 
 [[tests]]
@@ -209,6 +210,15 @@ name = "22-prog-rstr"
 input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/22-prog-rstr.dig"]
 expected = """
 22-prog-rstr: passed
+"""
+rubric = 5
+
+
+[[tests]]
+name = "23-prog-countll"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/23-prog-countll.dig"]
+expected = """
+23-prog-countll: passed
 """
 rubric = 5
 

@@ -1507,7 +1507,7 @@
         </entry>
         <entry>
           <string>Label</string>
-          <string>23-none</string>
+          <string>23-prog-countll</string>
         </entry>
         <entry>
           <string>Bits</string>
@@ -1515,7 +1515,7 @@
         </entry>
         <entry>
           <string>Data</string>
-          <data>deadbeef</data>
+          <data>40000113,fd010113,00b00293,00512423,01010293,00513023,01600293,00512c23,02010293,00513823,01600293,02512423,00000293,02513023,00200533,008000ef,c0001073,00000293,00050863,00128293,00053503,ff5ff06f,00028513,00008067</data>
         </entry>
       </elementAttributes>
       <pos x="760" y="1040"/>

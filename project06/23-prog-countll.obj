@@ -1,0 +1,37 @@
+
+prog-countll.o:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	40000113          	li	sp,1024
+   4:	fd010113          	add	sp,sp,-48
+   8:	00b00293          	li	t0,11
+   c:	00512423          	sw	t0,8(sp)
+  10:	01010293          	add	t0,sp,16
+  14:	00513023          	sd	t0,0(sp)
+  18:	01600293          	li	t0,22
+  1c:	00512c23          	sw	t0,24(sp)
+  20:	02010293          	add	t0,sp,32
+  24:	00513823          	sd	t0,16(sp)
+  28:	01600293          	li	t0,22
+  2c:	02512423          	sw	t0,40(sp)
+  30:	00000293          	li	t0,0
+  34:	02513023          	sd	t0,32(sp)
+  38:	00200533          	add	a0,zero,sp
+  3c:	008000ef          	jal	44 <countll_s>
+  40:	c0001073          	unimp
+
+0000000000000044 <countll_s>:
+  44:	00000293          	li	t0,0
+
+0000000000000048 <countll_while>:
+  48:	00050863          	beqz	a0,58 <countll_done>
+  4c:	00128293          	add	t0,t0,1
+  50:	00053503          	ld	a0,0(a0)
+  54:	ff5ff06f          	j	48 <countll_while>
+
+0000000000000058 <countll_done>:
+  58:	00028513          	mv	a0,t0
+  5c:	00008067          	ret

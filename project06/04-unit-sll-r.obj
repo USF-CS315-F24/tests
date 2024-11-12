@@ -1,11 +1,2 @@
 
-unit-sll-r.o:     file format elf64-littleriscv
-
-
-Disassembly of section .text:
-
-0000000000000000 <main>:
-   0:	00100593          	li	a1,1
-   4:	00200613          	li	a2,2
-   8:	00c59533          	sll	a0,a1,a2
-   c:	c0001073          	unimp
+unit-sll-r.o:	file format elf64-littleriscv
