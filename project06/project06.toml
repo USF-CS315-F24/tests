@@ -4,7 +4,7 @@ strip_output = """
 Use default settings!
 """
 timeout = 20
-
+capture_stderr = false
 
 [[tests]]
 name = "00-unit-add-i"
