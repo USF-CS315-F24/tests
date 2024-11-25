@@ -1,0 +1,79 @@
+[project]
+build = "none"
+strip_output = """
+Use default settings!
+"""
+timeout = 60
+capture_stderr = false
+
+[[tests]]
+name = "00-add-3nop"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/00-add-3nop-test.dig"]
+expected = """
+00-add-3nop-test: passed
+"""
+rubric = 1
+
+[[tests]]
+name = "01-add-2nop"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/01-add-2nop-test.dig"]
+expected = """
+01-add-2nop-test: passed
+"""
+rubric = 3
+
+[[tests]]
+name = "02-jal"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/02-jal-test.dig"]
+expected = """
+02-jal-test: passed
+"""
+rubric = 3
+
+[[tests]]
+name = "03-ld"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/03-ld-test.dig"]
+expected = """
+03-ld-test: passed
+"""
+rubric = 3
+
+[[tests]]
+name = "04-add-fwd"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/04-add-fwd-test.dig"]
+expected = """
+04-add-fwd-test: passed
+"""
+rubric = 50
+
+[[tests]]
+name = "05-ld-stl"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/05-ld-stl-test.dig"]
+expected = """
+05-ld-stl-test: passed
+"""
+rubric = 20
+
+[[tests]]
+name = "06-jal-fls"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/06-jal-fls-test.dig"]
+expected = """
+06-jal-fls-test: passed
+"""
+rubric = 10
+
+[[tests]]
+name = "07-branch"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/07-branch-test.dig"]
+expected = """
+07-branch-test: passed
+"""
+rubric = 5
+
+[[tests]]
+name = "08-fibrec"
+input = ["java", "-cp", "$digital", "CLI", "test", "$project.dig", "-tests", "$project_tests/08-fibrec-test.dig"]
+expected = """
+08-fibrec-test: passed
+"""
+rubric = 5

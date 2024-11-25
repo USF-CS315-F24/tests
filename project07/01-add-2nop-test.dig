@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>01-add-2nop-test</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>EN CLR CLK PROG A0 DONE
+1  1   0   x    x  x
+1  0   0   x    x  x
+while (!(DONE))
+1  0   C   1    x  x
+end while
+1  0   0   0    8  1</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="180" y="160"/>
+    </visualElement>
+  </visualElements>
+  <wires/>
+  <measurementOrdering/>
+</circuit>
